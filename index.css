@@ -10,9 +10,11 @@ body {
   height: 100dvh;
   overflow: hidden;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 20px;
+  gap: 6px;
 }
 
 button {
@@ -48,6 +50,7 @@ button:hover {
   box-shadow: 0 4px 30px #0001;
   border: 1px solid #ddd;
   display: block;
+  gap: 15px;
 }
 
 .pomodoro-container-settings {
@@ -62,7 +65,8 @@ button:hover {
   display: none;
 }
 
-.config {
+.config,
+.config-settings {
   padding-bottom: 25px;
   padding-right: 15px;
   margin: 0;
@@ -118,4 +122,13 @@ button:hover {
 
 .button-container button {
   margin-inline: auto;
+}
+
+.laps {
+  padding: 20px;
+  text-align: center;
+}
+
+.rest-time {
+  filter: grayscale(1);
 }

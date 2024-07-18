@@ -8,13 +8,14 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
-    <title>Pomodoro</title>
+    <title>Pomodoro Timer</title>
   </head>
   <body>
     <div class="bg"></div>
+    <h1>Pomodoro Timer</h1>
     <div class="pomodoro-container" id="pomodoro-container">
       <div class="config">
-        <button class="config-btn"><i class="fa-solid fa-gear"></i></button>
+        <button class="config-btn" title="Settings"><i class="fa-solid fa-gear"></i></button>
       </div>
       <div class="timer">
         <svg class="circle-timer" viewBox="0 0 100 100">
@@ -30,24 +31,25 @@
           ></text>
         </svg>
       </div>
+      <div class="laps">Working Laps: <strong><span id="laps"></span></strong></div>
       <div class="button-container">
-        <button class="play-btn">
+        <button class="play-btn" title="Play">
           <i class="fa-solid fa-play"></i>
         </button>
-        <button class="pause-btn" disabled>
+        <button class="pause-btn" disabled title="Pause" >
           <i class="fa-solid fa-pause"></i>
         </button>
       </div>
     </div>
     <div class="pomodoro-container-settings" id="pomodoro-container-settings">
       <div class="config-settings">
-        <button class="config-btn-settings"><i class="fa-solid fa-gear"></i></button>
+        <button class="config-btn-settings" title="Exit Settings"><i class="fa-solid fa-gear"></i></button>
       </div>
       <div class="input-config">
         <label for="work-input">Work Time</label>
-        <input type="number" class="work-input" id="work-input" name="work-input">
+        <input type="number" class="work-input" id="work-input" name="work-input" value="25">
         <label for="rest-input">Rest Time</label>
-        <input type="number" class="rest-input" id="rest-input" name="rest-input">
+        <input type="number" class="rest-input" id="rest-input" name="rest-input" value="5">
     </div>
     <script src="main.js" type="module"></script>
   </body>
