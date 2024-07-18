@@ -5,6 +5,10 @@ const timerTime = document.querySelector(".timer-time");
 const workDurationInput = 20;
 const restDurationInput = 10;
 const circle = document.getElementById("timer-fg");
+const configBtn = document.querySelector(".config-btn");
+const configBtnSet = document.querySelector(".config-btn-settings");
+const pomodoroContainer = document.getElementById("pomodoro-container");
+const configContainer = document.getElementById("pomodoro-container-settings");
 
 let defaultWorkTime = 20;
 let defaultRestTime = 10;
@@ -77,4 +81,14 @@ playBtn.addEventListener("click", () => {
 pauseBtn.addEventListener("click", () => {
   console.log("Pausa");
   pause();
+});
+
+configBtn.addEventListener("click", () => {
+  pomodoroContainer.style.display = "none";
+  configContainer.style.display = "block";
+});
+
+configBtnSet.addEventListener("click", () => {
+  pomodoroContainer.style.display = "block";
+  configContainer.style.display = "none";
 });

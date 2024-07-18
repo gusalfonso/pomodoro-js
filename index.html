@@ -12,7 +12,7 @@
   </head>
   <body>
     <div class="bg"></div>
-    <div class="pomodoro-container">
+    <div class="pomodoro-container" id="pomodoro-container">
       <div class="config">
         <button class="config-btn"><i class="fa-solid fa-gear"></i></button>
       </div>
@@ -38,8 +38,16 @@
           <i class="fa-solid fa-pause"></i>
         </button>
       </div>
-
-      <div class="reset"></div>
+    </div>
+    <div class="pomodoro-container-settings" id="pomodoro-container-settings">
+      <div class="config-settings">
+        <button class="config-btn-settings"><i class="fa-solid fa-gear"></i></button>
+      </div>
+      <div class="input-config">
+        <label for="work-input">Work Time</label>
+        <input type="number" class="work-input" id="work-input" name="work-input">
+        <label for="rest-input">Rest Time</label>
+        <input type="number" class="rest-input" id="rest-input" name="rest-input">
     </div>
     <script src="main.js" type="module"></script>
   </body>
