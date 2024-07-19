@@ -4,20 +4,34 @@ const pauseBtn = document.querySelector(".pause-btn");
 const timerTime = document.querySelector(".timer-time");
 const circle = document.getElementById("timer-fg");
 const configBtn = document.querySelector(".config-btn");
-const configBtnSet = document.querySelector(".config-btn-settings");
 const pomodoroContainer = document.getElementById("pomodoro-container");
 const configContainer = document.getElementById("pomodoro-container-settings");
 const laps = document.getElementById("laps");
 const body = document.querySelector("body");
+const playBtnSettings = document.querySelector(".play-btn-settings");
 
 const workDurationInput = document.getElementById("work-input");
 const restDurationInput = document.getElementById("rest-input");
 
-let workDuration = workDurationInput.value * 60;
-let restDuration = restDurationInput.value * 60;
+let duration;
+let workDuration;
+let restDuration;
+
+function checkInput(input) {
+  if (input.value) {
+    const regex = /^\d+:([0-5][0-9])$/;
+    if (regex.test(input.value)) {
+      let [min, seg] = input.value.split(":");
+      duration = parseInt(min) * 60 + parseInt(seg);
+      return duration;
+    } else {
+      alert("Debe introducir un tiempo con el formato MM:SS");
+    }
+  }
+}
 
 workDurationInput.addEventListener("change", () => {
-  workDuration = parseInt(workDurationInput.value * 60);
+  workDuration = parseInt(checkInput(workDurationInput));
   if (isWorking) {
     remainingTime = workDuration;
     refreshProgress(remainingTime);
@@ -25,14 +39,14 @@ workDurationInput.addEventListener("change", () => {
 });
 
 restDurationInput.addEventListener("change", () => {
-  restDuration = parseInt(restDurationInput.value * 60);
+  restDuration = parseInt(checkInput(restDurationInput));
   if (!isWorking) {
     remainingTime = restDuration;
     refreshProgress(remainingTime);
   }
 });
 
-let remainingTime = workDuration;
+let remainingTime = parseInt(checkInput(workDurationInput));
 let isRunning = false;
 let isWorking = true;
 let intervalId;
@@ -126,8 +140,15 @@ configBtn.addEventListener("click", () => {
   pauseBtn.setAttribute("disabled", "");
 });
 
-configBtnSet.addEventListener("click", () => {
-  pomodoroContainer.style.display = "block";
-  configContainer.style.display = "none";
-  lap = 0;
+playBtnSettings.addEventListener("click", () => {
+  if (
+    typeof checkInput(workDurationInput) === "number" &&
+    typeof checkInput(restDurationInput) === "number"
+  ) {
+    checkInput(workDurationInput);
+    checkInput(restDurationInput);
+    pomodoroContainer.style.display = "block";
+    configContainer.style.display = "none";
+    lap = 0;
+  }
 });
