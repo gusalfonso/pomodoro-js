@@ -14,8 +14,8 @@ const workDurationInput = document.getElementById("work-input");
 const restDurationInput = document.getElementById("rest-input");
 
 let duration;
-let workDuration;
-let restDuration;
+let workDuration = parseInt(checkInput(workDurationInput));
+let restDuration = parseInt(checkInput(restDurationInput));
 
 function checkInput(input) {
   if (input.value) {
@@ -89,6 +89,7 @@ function play() {
 
   const workAudio = new Audio("/sound1.wav");
   const restAudio = new Audio("/sound2.wav");
+
   let playSound;
 
   if (!intervalId) {
