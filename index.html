@@ -8,7 +8,23 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
-    <title>Pomodoro Timer</title>
+    <title>Pomodoro Timer | Boost Your Productivity</title>
+    <meta
+      name="description"
+      content="Pomodoro Timer to enhance your productivity with customizable work and rest intervals."
+    />
+    <meta
+      name="keywords"
+      content="Pomodoro Timer, Time Management, Productivity, Work and Rest Intervals"
+    />
+    <meta property="og:title" content="Pomodoro Timer | Boost Your Productivity" />
+    <meta property="og:description" content="Enhance your productivity with our Pomodoro Timer. Customize work and rest intervals for optimal focus." />
+    <meta property="og:image" content="/img/pomodoro.png" />
+    <meta property="og:url" content="https://pomodorotimerjs.netlify.app/" />
+    <meta name="twitter:card" content="/img/pomodoro.png" />
+    <meta name="twitter:title" content="Pomodoro Timer | Boost Your Productivity" />
+    <meta name="twitter:description" content="Enhance your productivity with our Pomodoro Timer. Customize work and rest intervals for optimal focus." />
+    <meta name="twitter:image" content="/img/pomodoro.png" />
   </head>
   <body>
     <div class="bg"></div>
@@ -36,14 +52,17 @@
         <button class="play-btn" title="Play">
           <i class="fa-solid fa-play"></i>
         </button>
-        <button class="pause-btn" disabled title="Pause" >
+        <button class="pause-btn" disabled title="Pause">
           <i class="fa-solid fa-pause"></i>
+        </button>
+        <button class="reset-btn" title="Reset">
+          <i class="fa-solid fa-rotate-left"></i>
         </button>
       </div>
     </div>
     <div class="pomodoro-container-settings" id="pomodoro-container-settings">
       <div class="config-settings">
-        <button class="config-btn-settings" title="Exit Settings"><i class="fa-solid fa-gear"></i></button>
+        <button class="back-btn" title="Volver"><i class="fa-solid fa-arrow-left"></i></button>
       </div>
       <div class="input-config">
         <label for="work-input">Work Time</label>

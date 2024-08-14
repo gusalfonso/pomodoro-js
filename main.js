@@ -1,4 +1,3 @@
-// Get Elements:
 const playBtn = document.querySelector(".play-btn");
 const pauseBtn = document.querySelector(".pause-btn");
 const timerTime = document.querySelector(".timer-time");
@@ -9,6 +8,8 @@ const configContainer = document.getElementById("pomodoro-container-settings");
 const laps = document.getElementById("laps");
 const body = document.querySelector("body");
 const playBtnSettings = document.querySelector(".play-btn-settings");
+const resetBtn = document.querySelector(".reset-btn");
+const backBtn = document.querySelector(".back-btn");
 
 const workDurationInput = document.getElementById("work-input");
 const restDurationInput = document.getElementById("rest-input");
@@ -76,7 +77,7 @@ function refreshProgress(time) {
   const radius = 45;
   const circ = 2 * Math.PI * radius;
   const totalDuration = isWorking ? workDuration : restDuration;
-  const rel = circ * (time / totalDuration);
+  const rel = circ * ((time - 1) / totalDuration);
 
   circle.style.strokeDashoffset = rel;
   timerTime.innerHTML = formattedTime(time);
@@ -122,14 +123,39 @@ function pause() {
   isRunning = false;
 }
 
-playBtn.addEventListener("click", () => {
-  console.log("Play");
-  play();
+function resetTimer() {
+  clearInterval(intervalId);
+  intervalId = null;
+  isRunning = false;
+  lap = 0;
+  laps.innerHTML = lap;
+  isWorking = true;
+  remainingTime = workDuration;
+  refreshProgress(remainingTime);
+  playBtn.removeAttribute("disabled");
+  pauseBtn.setAttribute("disabled", "");
+  body.classList.remove("rest-time");
+}
+
+playBtnSettings.addEventListener("click", () => {
+  const workCheck = checkInput(workDurationInput);
+  const restCheck = checkInput(restDurationInput);
+
+  if (typeof workCheck === "number" && typeof restCheck === "number") {
+    workDuration = workCheck;
+    restDuration = restCheck;
+    remainingTime = workDuration;
+    pomodoroContainer.style.display = "block";
+    configContainer.style.display = "none";
+    lap = 0;
+    refreshProgress(remainingTime);
+  }
 });
-pauseBtn.addEventListener("click", () => {
-  console.log("Pausa");
-  pause();
-});
+
+resetBtn.addEventListener("click", resetTimer);
+
+playBtn.addEventListener("click", play);
+pauseBtn.addEventListener("click", pause);
 
 configBtn.addEventListener("click", () => {
   pomodoroContainer.style.display = "none";
@@ -141,15 +167,7 @@ configBtn.addEventListener("click", () => {
   pauseBtn.setAttribute("disabled", "");
 });
 
-playBtnSettings.addEventListener("click", () => {
-  if (
-    typeof checkInput(workDurationInput) === "number" &&
-    typeof checkInput(restDurationInput) === "number"
-  ) {
-    checkInput(workDurationInput);
-    checkInput(restDurationInput);
-    pomodoroContainer.style.display = "block";
-    configContainer.style.display = "none";
-    lap = 0;
-  }
+backBtn.addEventListener("click", () => {
+  pomodoroContainer.style.display = "block";
+  configContainer.style.display = "none";
 });
