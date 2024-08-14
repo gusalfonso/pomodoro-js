@@ -88,8 +88,8 @@ function play() {
   pauseBtn.removeAttribute("disabled", "");
   isRunning = true;
 
-  const workAudio = new Audio("/sound1.wav");
-  const restAudio = new Audio("/sound2.wav");
+  const workAudio = new Audio("/sound/sound1.wav");
+  const restAudio = new Audio("/sound/sound2.wav");
 
   let playSound;
 
