@@ -77,7 +77,7 @@ function refreshProgress(time) {
   const radius = 45;
   const circ = 2 * Math.PI * radius;
   const totalDuration = isWorking ? workDuration : restDuration;
-  const rel = circ * ((time - 1) / totalDuration);
+  const rel = circ * (time / totalDuration);
 
   circle.style.strokeDashoffset = rel;
   timerTime.innerHTML = formattedTime(time);
